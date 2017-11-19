@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+/barbican/src/main/resources/config/
+/armory/src/main/resources/config/
+.gitignore
+.idea/inspectionProfiles/
+armory/.mvn/wrapper/maven-wrapper.jar
+barbican/.mvn/wrapper/maven-wrapper.jar
+barbican/src/test/gatling/user-files/
+registry/.mvn/wrapper/maven-wrapper.jar

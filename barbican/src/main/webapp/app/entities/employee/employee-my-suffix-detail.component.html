@@ -1,0 +1,112 @@
+
+<div *ngIf="employee">
+    <h2><span jhiTranslate="barbicanApp.employee.detail.title">Employee</span> {{employee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="barbicanApp.employee.employeeId">Employee Id</span></dt>
+        <dd>
+            <span>{{employee.employeeId}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.playerType">Player Type</span></dt>
+        <dd>
+            <span>{{employee.playerType}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.firstName">First Name</span></dt>
+        <dd>
+            <span>{{employee.firstName}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{employee.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.email">Email</span></dt>
+        <dd>
+            <span>{{employee.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.phone">Phone</span></dt>
+        <dd>
+            <span>{{employee.phone}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.badgeNumber">Badge Number</span></dt>
+        <dd>
+            <span>{{employee.badgeNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{employee.startDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.previousSalary">Previous Salary</span></dt>
+        <dd>
+            <span>{{employee.previousSalary}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.currentSalary">Current Salary</span></dt>
+        <dd>
+            <span>{{employee.currentSalary}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.goalSalary">Goal Salary</span></dt>
+        <dd>
+            <span>{{employee.goalSalary}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.pathGoal">Path Goal</span></dt>
+        <dd>
+            <span>{{employee.pathGoal}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.address">Address</span></dt>
+        <dd>
+            <span>{{employee.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.city">City</span></dt>
+        <dd>
+            <span>{{employee.city}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.zip">Zip</span></dt>
+        <dd>
+            <span>{{employee.zip}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.state">State</span></dt>
+        <dd>
+            <span>{{employee.state}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.employeeAvatar">Employee Avatar</span></dt>
+        <dd>
+            <div *ngIf="employee.employeeAvatar">
+                <a (click)="openFile(employee.employeeAvatarContentType, employee.employeeAvatar)">
+                    <img [src]="'data:' + employee.employeeAvatarContentType + ';base64,' + employee.employeeAvatar" style="max-width: 100%;" alt="employee image"/>
+                </a>
+                {{employee.employeeAvatarContentType}}, {{byteSize(employee.employeeAvatar)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.department">Department</span></dt>
+        <dd>
+            <div *ngIf="employee.departmentId">
+                <a [routerLink]="['/department-my-suffix', employee.departmentId]">{{employee.departmentId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.manager">Manager</span></dt>
+        <dd>
+            <div *ngIf="employee.managerId">
+                <a [routerLink]="['/employee-my-suffix', employee.managerId]">{{employee.managerId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.discipline">Discipline</span></dt>
+        <dd>
+            <div *ngIf="employee.disciplineId">
+                <a [routerLink]="['/discipline-my-suffix', employee.disciplineId]">{{employee.disciplineId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'employee-my-suffix/'+ employee.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

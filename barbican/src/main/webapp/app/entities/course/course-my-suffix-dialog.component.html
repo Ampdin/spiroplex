@@ -1,0 +1,79 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCourseLabel" jhiTranslate="barbicanApp.course.home.createOrEditLabel">Create or edit a Course</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!course.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="course.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.course.courseTitle" for="field_courseTitle">Course Title</label>
+            <input type="text" class="form-control" name="courseTitle" id="field_courseTitle"
+                [(ngModel)]="course.courseTitle" required />
+            <div [hidden]="!(editForm.controls.courseTitle?.dirty && editForm.controls.courseTitle?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.courseTitle?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.course.courseAvator" for="field_courseAvator">Course Avator</label>
+            <div>
+                <img [src]="'data:' + course.courseAvatorContentType + ';base64,' + course.courseAvator" style="max-height: 100px;" *ngIf="course.courseAvator" alt="course image"/>
+                <div *ngIf="course.courseAvator" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{course.courseAvatorContentType}}, {{byteSize(course.courseAvator)}}</span>
+                    <button type="button" (click)="clearInputImage('courseAvator', 'courseAvatorContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_courseAvator" (change)="setFileData($event, course, 'courseAvator', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="courseAvator" id="field_courseAvator"
+                [(ngModel)]="course.courseAvator"  />
+            <input type="hidden" class="form-control" name="courseAvatorContentType" id="field_courseAvatorContentType"
+                [(ngModel)]="course.courseAvatorContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.course.courseDescription" for="field_courseDescription">Course Description</label>
+            <input type="text" class="form-control" name="courseDescription" id="field_courseDescription"
+                [(ngModel)]="course.courseDescription"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.course.coursePrice" for="field_coursePrice">Course Price</label>
+            <input type="number" class="form-control" name="coursePrice" id="field_coursePrice"
+                [(ngModel)]="course.coursePrice"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.course.courseLevel" for="field_courseLevel">Course Level</label>
+            <select class="form-control" name="courseLevel" [(ngModel)]="course.courseLevel" id="field_courseLevel" >
+                <option value="NOVICE">{{'barbicanApp.Level.NOVICE' | translate}}</option>
+                <option value="BEGINNER">{{'barbicanApp.Level.BEGINNER' | translate}}</option>
+                <option value="INTERMEDIATE">{{'barbicanApp.Level.INTERMEDIATE' | translate}}</option>
+                <option value="ADVANCED">{{'barbicanApp.Level.ADVANCED' | translate}}</option>
+                <option value="PROFESSIONAL">{{'barbicanApp.Level.PROFESSIONAL' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="barbicanApp.course.lessons" for="field_lessons">Lessons</label>
+            <select class="form-control" id="field_lessons" multiple name="lessons" [(ngModel)]="course.lessons">
+                <option [ngValue]="getSelected(course.lessons, lessonOption)" *ngFor="let lessonOption of lessons; trackBy: trackLessonById">{{lessonOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

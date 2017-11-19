@@ -1,0 +1,78 @@
+
+<div *ngIf="resource">
+    <h2><span jhiTranslate="barbicanApp.resource.detail.title">Resource</span> {{resource.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="barbicanApp.resource.resourceName">Resource Name</span></dt>
+        <dd>
+            <span>{{resource.resourceName}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.resourceAvator">Resource Avator</span></dt>
+        <dd>
+            <div *ngIf="resource.resourceAvator">
+                <a (click)="openFile(resource.resourceAvatorContentType, resource.resourceAvator)">
+                    <img [src]="'data:' + resource.resourceAvatorContentType + ';base64,' + resource.resourceAvator" style="max-width: 100%;" alt="resource image"/>
+                </a>
+                {{resource.resourceAvatorContentType}}, {{byteSize(resource.resourceAvator)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.resourceDescription">Resource Description</span></dt>
+        <dd>
+            <span>{{resource.resourceDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.resourceURL">Resource URL</span></dt>
+        <dd>
+            <span>{{resource.resourceURL}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.resourcePreviewImage">Resource Preview Image</span></dt>
+        <dd>
+            <span>{{resource.resourcePreviewImage}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.resourceType">Resource Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'barbicanApp.ResourceType.' + resource.resourceType}}">{{resource.resourceType}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.weight">Weight</span></dt>
+        <dd>
+            <span>{{resource.weight}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.discipline">Discipline</span></dt>
+        <dd>
+            <div *ngIf="resource.disciplineId">
+                <a [routerLink]="['/discipline-my-suffix', resource.disciplineId]">{{resource.disciplineId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.program">Program</span></dt>
+        <dd>
+            <div *ngIf="resource.programId">
+                <a [routerLink]="['/program-my-suffix', resource.programId]">{{resource.programId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.course">Course</span></dt>
+        <dd>
+            <div *ngIf="resource.courseId">
+                <a [routerLink]="['/course-my-suffix', resource.courseId]">{{resource.courseId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.resource.lesson">Lesson</span></dt>
+        <dd>
+            <div *ngIf="resource.lessonId">
+                <a [routerLink]="['/lesson-my-suffix', resource.lessonId]">{{resource.lessonId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'resource-my-suffix/'+ resource.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
