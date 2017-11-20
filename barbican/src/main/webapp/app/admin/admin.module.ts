@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { JhiTrackerService } from './../shared/tracker/tracker.service';
 
 import { BarbicanSharedModule } from '../shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
@@ -27,7 +26,6 @@ import {
     JhiMetricsService,
     GatewayRoutesService,
     JhiGatewayComponent,
-    JhiTrackerComponent,
     LogsService,
     UserResolvePagingParams,
     UserResolve,
@@ -54,7 +52,6 @@ import {
         JhiHealthModalComponent,
         JhiDocsComponent,
         JhiGatewayComponent,
-        JhiTrackerComponent,
         JhiMetricsMonitoringComponent,
         JhiMetricsMonitoringModalComponent
     ],
@@ -71,7 +68,6 @@ import {
         JhiMetricsService,
         GatewayRoutesService,
         LogsService,
-        JhiTrackerService,
         UserResolvePagingParams,
         UserResolve,
         UserModalService

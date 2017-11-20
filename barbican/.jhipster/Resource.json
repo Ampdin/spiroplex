@@ -58,7 +58,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20171119083533",
+    "changelogDate": "20171119201144",
     "entityTableName": "resource",
     "dto": "mapstruct",
     "pagination": "no",

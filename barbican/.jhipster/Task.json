@@ -71,7 +71,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20171119083525",
+    "changelogDate": "20171119201136",
     "javadoc": "Task entity.\n@author The JHipster team.",
     "entityTableName": "task",
     "dto": "mapstruct",

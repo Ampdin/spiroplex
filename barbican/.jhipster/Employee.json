@@ -98,7 +98,7 @@
             "fieldTypeBlobContent": "image"
         }
     ],
-    "changelogDate": "20171119083526",
+    "changelogDate": "20171119201137",
     "javadoc": "The Employee entity.",
     "entityTableName": "employee",
     "dto": "mapstruct",

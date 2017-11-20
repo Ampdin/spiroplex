@@ -38,7 +38,7 @@
             "fieldValues": "ENGLISH,SPANISH,HUNGARIAN,GERMAN,FRENCH"
         }
     ],
-    "changelogDate": "20171119083532",
+    "changelogDate": "20171119201143",
     "entityTableName": "lesson",
     "dto": "mapstruct",
     "pagination": "infinite-scroll",

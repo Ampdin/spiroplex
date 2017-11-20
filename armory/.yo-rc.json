@@ -17,15 +17,18 @@
     "devDatabaseType": "mysql",
     "prodDatabaseType": "mysql",
     "searchEngine": "elasticsearch",
-    "messageBroker": "kafka",
+    "messageBroker": false,
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
     "enableSocialSignIn": false,
-    "enableSwaggerCodegen": true,
-    "jwtSecretKey": "7636d3c411f29f6dd069336daa30daf9c206c193",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "92b59d5734531fab90ebbb415a6bdbaaadbfb3d0",
     "enableTranslation": true,
     "applicationType": "microservice",
-    "testFrameworks": [],
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
     "jhiPrefix": "jhi",
     "nativeLanguage": "en",
     "languages": [

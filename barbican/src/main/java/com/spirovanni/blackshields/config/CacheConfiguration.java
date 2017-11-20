@@ -24,8 +24,6 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.session.SessionRegistryImpl;
 
 import javax.annotation.PreDestroy;
 
@@ -111,7 +109,6 @@ public class CacheConfiguration {
         }
         config.getMapConfigs().put("default", initializeDefaultMapConfig());
         config.getMapConfigs().put("com.spirovanni.blackshields.domain.*", initializeDomainMapConfig(jHipsterProperties));
-        config.getMapConfigs().put("clustered-http-sessions", initializeClusteredSession(jHipsterProperties));
         return Hazelcast.newHazelcastInstance(config);
     }
 
@@ -149,22 +146,5 @@ public class CacheConfiguration {
         MapConfig mapConfig = new MapConfig();
         mapConfig.setTimeToLiveSeconds(jHipsterProperties.getCache().getHazelcast().getTimeToLiveSeconds());
         return mapConfig;
-    }
-
-    private MapConfig initializeClusteredSession(JHipsterProperties jHipsterProperties) {
-        MapConfig mapConfig = new MapConfig();
-        mapConfig.setBackupCount(jHipsterProperties.getCache().getHazelcast().getBackupCount());
-        mapConfig.setTimeToLiveSeconds(jHipsterProperties.getCache().getHazelcast().getTimeToLiveSeconds());
-        return mapConfig;
-    }
-
-    /**
-     * Used by Spring Security, to get events from Hazelcast.
-     *
-     * @return the session registry
-     */
-    @Bean
-    public SessionRegistry sessionRegistry() {
-        return new SessionRegistryImpl();
     }
 }
