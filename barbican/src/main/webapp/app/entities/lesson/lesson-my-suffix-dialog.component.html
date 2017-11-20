@@ -1,0 +1,68 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLessonLabel" jhiTranslate="barbicanApp.lesson.home.createOrEditLabel">Create or edit a Lesson</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!lesson.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="lesson.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.lesson.lessonTitle" for="field_lessonTitle">Lesson Title</label>
+            <input type="text" class="form-control" name="lessonTitle" id="field_lessonTitle"
+                [(ngModel)]="lesson.lessonTitle" required />
+            <div [hidden]="!(editForm.controls.lessonTitle?.dirty && editForm.controls.lessonTitle?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lessonTitle?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.lesson.lessonAvator" for="field_lessonAvator">Lesson Avator</label>
+            <div>
+                <img [src]="'data:' + lesson.lessonAvatorContentType + ';base64,' + lesson.lessonAvator" style="max-height: 100px;" *ngIf="lesson.lessonAvator" alt="lesson image"/>
+                <div *ngIf="lesson.lessonAvator" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{lesson.lessonAvatorContentType}}, {{byteSize(lesson.lessonAvator)}}</span>
+                    <button type="button" (click)="clearInputImage('lessonAvator', 'lessonAvatorContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_lessonAvator" (change)="setFileData($event, lesson, 'lessonAvator', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="lessonAvator" id="field_lessonAvator"
+                [(ngModel)]="lesson.lessonAvator"  />
+            <input type="hidden" class="form-control" name="lessonAvatorContentType" id="field_lessonAvatorContentType"
+                [(ngModel)]="lesson.lessonAvatorContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.lesson.lessonDescription" for="field_lessonDescription">Lesson Description</label>
+            <input type="text" class="form-control" name="lessonDescription" id="field_lessonDescription"
+                [(ngModel)]="lesson.lessonDescription"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.lesson.language" for="field_language">Language</label>
+            <select class="form-control" name="language" [(ngModel)]="lesson.language" id="field_language" >
+                <option value="ENGLISH">{{'barbicanApp.Language.ENGLISH' | translate}}</option>
+                <option value="SPANISH">{{'barbicanApp.Language.SPANISH' | translate}}</option>
+                <option value="HUNGARIAN">{{'barbicanApp.Language.HUNGARIAN' | translate}}</option>
+                <option value="GERMAN">{{'barbicanApp.Language.GERMAN' | translate}}</option>
+                <option value="FRENCH">{{'barbicanApp.Language.FRENCH' | translate}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

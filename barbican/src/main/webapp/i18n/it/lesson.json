@@ -1,0 +1,27 @@
+{
+    "barbicanApp": {
+        "lesson" : {
+            "home": {
+                "title": "Lessons",
+                "createLabel": "Genera un nuovo Lesson",
+                "createOrEditLabel": "Genera o modifica un Lesson",
+                "search": "Cerca Lesson"
+            },
+            "created": "&Egrave; stato generato un nuovo Lesson con identificatore {{ param }}",
+            "updated": "&Egrave; stato aggiornato Lesson identificato da {{ param }}",
+            "deleted": "&Egrave; stato eliminato Lesson con identificatore {{ param }}",
+            "delete": {
+                "question": "Sei sicuro di volere eliminare Lesson {{ id }}?"
+            },
+            "detail": {
+                "title": "Lesson"
+            },
+            "lessonTitle": "Lesson Title",
+            "lessonAvator": "Lesson Avator",
+            "lessonDescription": "Lesson Description",
+            "language": "Language",
+            "resources": "Resources",
+            "courses": "Courses"
+        }
+    }
+}
