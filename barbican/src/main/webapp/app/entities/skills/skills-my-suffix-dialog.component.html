@@ -1,0 +1,155 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySkillsLabel" jhiTranslate="barbicanApp.skills.home.createOrEditLabel">Create or edit a Skills</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!skills.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="skills.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.socSpecificSkName" for="field_socSpecificSkName">Soc Specific Sk Name</label>
+            <input type="text" class="form-control" name="socSpecificSkName" id="field_socSpecificSkName"
+                [(ngModel)]="skills.socSpecificSkName"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.socSpecificSkCode" for="field_socSpecificSkCode">Soc Specific Sk Code</label>
+            <input type="text" class="form-control" name="socSpecificSkCode" id="field_socSpecificSkCode"
+                [(ngModel)]="skills.socSpecificSkCode"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.anDaInLv" for="field_anDaInLv">An Da In Lv</label>
+            <input type="number" class="form-control" name="anDaInLv" id="field_anDaInLv"
+                [(ngModel)]="skills.anDaInLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.anDaInIm" for="field_anDaInIm">An Da In Im</label>
+            <input type="number" class="form-control" name="anDaInIm" id="field_anDaInIm"
+                [(ngModel)]="skills.anDaInIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.asCaOthLv" for="field_asCaOthLv">As Ca Oth Lv</label>
+            <input type="number" class="form-control" name="asCaOthLv" id="field_asCaOthLv"
+                [(ngModel)]="skills.asCaOthLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.asCaOthIm" for="field_asCaOthIm">As Ca Oth Im</label>
+            <input type="number" class="form-control" name="asCaOthIm" id="field_asCaOthIm"
+                [(ngModel)]="skills.asCaOthIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.coDevOthLv" for="field_coDevOthLv">Co Dev Oth Lv</label>
+            <input type="number" class="form-control" name="coDevOthLv" id="field_coDevOthLv"
+                [(ngModel)]="skills.coDevOthLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.coDevOthIm" for="field_coDevOthIm">Co Dev Oth Im</label>
+            <input type="number" class="form-control" name="coDevOthIm" id="field_coDevOthIm"
+                [(ngModel)]="skills.coDevOthIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.coPerOutOrgLv" for="field_coPerOutOrgLv">Co Per Out Org Lv</label>
+            <input type="number" class="form-control" name="coPerOutOrgLv" id="field_coPerOutOrgLv"
+                [(ngModel)]="skills.coPerOutOrgLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.coPerOutOrgIm" for="field_coPerOutOrgIm">Co Per Out Org Im</label>
+            <input type="number" class="form-control" name="coPerOutOrgIm" id="field_coPerOutOrgIm"
+                [(ngModel)]="skills.coPerOutOrgIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.coSupPeSubLv" for="field_coSupPeSubLv">Co Sup Pe Sub Lv</label>
+            <input type="number" class="form-control" name="coSupPeSubLv" id="field_coSupPeSubLv"
+                [(ngModel)]="skills.coSupPeSubLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.coSupPeSubIm" for="field_coSupPeSubIm">Co Sup Pe Sub Im</label>
+            <input type="number" class="form-control" name="coSupPeSubIm" id="field_coSupPeSubIm"
+                [(ngModel)]="skills.coSupPeSubIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.conMaProLv" for="field_conMaProLv">Con Ma Pro Lv</label>
+            <input type="number" class="form-control" name="conMaProLv" id="field_conMaProLv"
+                [(ngModel)]="skills.conMaProLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.conMaProIm" for="field_conMaProIm">Con Ma Pro Im</label>
+            <input type="number" class="form-control" name="conMaProIm" id="field_conMaProIm"
+                [(ngModel)]="skills.conMaProIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.cooWorActOthLv" for="field_cooWorActOthLv">Coo Wor Act Oth Lv</label>
+            <input type="number" class="form-control" name="cooWorActOthLv" id="field_cooWorActOthLv"
+                [(ngModel)]="skills.cooWorActOthLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.cooWorActOthIm" for="field_cooWorActOthIm">Coo Wor Act Oth Im</label>
+            <input type="number" class="form-control" name="cooWorActOthIm" id="field_cooWorActOthIm"
+                [(ngModel)]="skills.cooWorActOthIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.devBuildTeamsLv" for="field_devBuildTeamsLv">Dev Build Teams Lv</label>
+            <input type="number" class="form-control" name="devBuildTeamsLv" id="field_devBuildTeamsLv"
+                [(ngModel)]="skills.devBuildTeamsLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.devBuildTeamsIm" for="field_devBuildTeamsIm">Dev Build Teams Im</label>
+            <input type="number" class="form-control" name="devBuildTeamsIm" id="field_devBuildTeamsIm"
+                [(ngModel)]="skills.devBuildTeamsIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.devObjStratLv" for="field_devObjStratLv">Dev Obj Strat Lv</label>
+            <input type="number" class="form-control" name="devObjStratLv" id="field_devObjStratLv"
+                [(ngModel)]="skills.devObjStratLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.devObjStratIm" for="field_devObjStratIm">Dev Obj Strat Im</label>
+            <input type="number" class="form-control" name="devObjStratIm" id="field_devObjStratIm"
+                [(ngModel)]="skills.devObjStratIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.docRecInfoLv" for="field_docRecInfoLv">Doc Rec Info Lv</label>
+            <input type="number" class="form-control" name="docRecInfoLv" id="field_docRecInfoLv"
+                [(ngModel)]="skills.docRecInfoLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.docRecInfoIm" for="field_docRecInfoIm">Doc Rec Info Im</label>
+            <input type="number" class="form-control" name="docRecInfoIm" id="field_docRecInfoIm"
+                [(ngModel)]="skills.docRecInfoIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.drLayOutSpecLv" for="field_drLayOutSpecLv">Dr Lay Out Spec Lv</label>
+            <input type="number" class="form-control" name="drLayOutSpecLv" id="field_drLayOutSpecLv"
+                [(ngModel)]="skills.drLayOutSpecLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.drLayOutSpecIm" for="field_drLayOutSpecIm">Dr Lay Out Spec Im</label>
+            <input type="number" class="form-control" name="drLayOutSpecIm" id="field_drLayOutSpecIm"
+                [(ngModel)]="skills.drLayOutSpecIm"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.estMaIntRelLv" for="field_estMaIntRelLv">Est Ma Int Rel Lv</label>
+            <input type="number" class="form-control" name="estMaIntRelLv" id="field_estMaIntRelLv"
+                [(ngModel)]="skills.estMaIntRelLv"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.skills.estMaIntRelIm" for="field_estMaIntRelIm">Est Ma Int Rel Im</label>
+            <input type="number" class="form-control" name="estMaIntRelIm" id="field_estMaIntRelIm"
+                [(ngModel)]="skills.estMaIntRelIm"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

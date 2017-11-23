@@ -9,6 +9,7 @@ import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { EmployeeMySuffix } from './employee-my-suffix.model';
 import { EmployeeMySuffixPopupService } from './employee-my-suffix-popup.service';
 import { EmployeeMySuffixService } from './employee-my-suffix.service';
+import { SocSpecificMySuffix, SocSpecificMySuffixService } from '../soc-specific';
 import { DepartmentMySuffix, DepartmentMySuffixService } from '../department';
 import { DisciplineMySuffix, DisciplineMySuffixService } from '../discipline';
 import { ResponseWrapper } from '../../shared';
@@ -22,17 +23,21 @@ export class EmployeeMySuffixDialogComponent implements OnInit {
     employee: EmployeeMySuffix;
     isSaving: boolean;
 
+    socspecifics: SocSpecificMySuffix[];
+
     departments: DepartmentMySuffix[];
 
     employees: EmployeeMySuffix[];
 
     disciplines: DisciplineMySuffix[];
+    startDateDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
         private employeeService: EmployeeMySuffixService,
+        private socSpecificService: SocSpecificMySuffixService,
         private departmentService: DepartmentMySuffixService,
         private disciplineService: DisciplineMySuffixService,
         private elementRef: ElementRef,
@@ -42,6 +47,8 @@ export class EmployeeMySuffixDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.socSpecificService.query()
+            .subscribe((res: ResponseWrapper) => { this.socspecifics = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.departmentService.query()
             .subscribe((res: ResponseWrapper) => { this.departments = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.employeeService.query()
@@ -98,6 +105,10 @@ export class EmployeeMySuffixDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackSocSpecificById(index: number, item: SocSpecificMySuffix) {
+        return item.id;
     }
 
     trackDepartmentById(index: number, item: DepartmentMySuffix) {

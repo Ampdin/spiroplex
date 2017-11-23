@@ -59,8 +59,8 @@ describe('Task e2e test', () => {
         expect(taskDialogPage.getRecommendSuppressInput()).toMatch('recommendSuppress');
         taskDialogPage.setNotRelevantInput('notRelevant');
         expect(taskDialogPage.getNotRelevantInput()).toMatch('notRelevant');
-        taskDialogPage.setDateInput(12310020012301);
-        expect(taskDialogPage.getDateInput()).toMatch('2001-12-31T02:30');
+        taskDialogPage.setDateInput('2000-12-31');
+        expect(taskDialogPage.getDateInput()).toMatch('2000-12-31');
         taskDialogPage.setDomainSourceInput('domainSource');
         expect(taskDialogPage.getDomainSourceInput()).toMatch('domainSource');
         taskDialogPage.setDescriptionInput('description');

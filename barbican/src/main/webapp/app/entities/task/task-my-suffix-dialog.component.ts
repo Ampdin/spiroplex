@@ -22,6 +22,7 @@ export class TaskMySuffixDialogComponent implements OnInit {
     isSaving: boolean;
 
     jobs: JobMySuffix[];
+    dateDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

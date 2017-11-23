@@ -31,8 +31,7 @@ public class Department implements Serializable {
     @Column(name = "department_name", nullable = false)
     private String departmentName;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private Location location;
 
     @OneToMany(mappedBy = "department")

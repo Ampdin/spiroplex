@@ -1,0 +1,11 @@
+{
+    "barbicanApp": {
+        "Group" : {
+            "null": "",
+            "MAIN": "MAIN",
+            "MAJOR": "MAJOR",
+            "ROLE": "ROLE",
+            "TITLED": "TITLED"
+        }
+    }
+}

@@ -29,11 +29,11 @@
     "fields": [
         {
             "fieldName": "startDate",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "endDate",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "language",
@@ -41,7 +41,7 @@
             "fieldValues": "ENGLISH,SPANISH,HUNGARIAN,GERMAN,FRENCH"
         }
     ],
-    "changelogDate": "20171119201139",
+    "changelogDate": "20171123043911",
     "entityTableName": "job_history",
     "dto": "mapstruct",
     "pagination": "infinite-scroll",

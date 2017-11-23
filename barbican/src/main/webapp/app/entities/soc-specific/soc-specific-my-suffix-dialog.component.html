@@ -1,0 +1,165 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySocSpecificLabel" jhiTranslate="barbicanApp.socSpecific.home.createOrEditLabel">Create or edit a Soc Specific</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!socSpecific.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="socSpecific.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.socSpecificName" for="field_socSpecificName">Soc Specific Name</label>
+            <input type="text" class="form-control" name="socSpecificName" id="field_socSpecificName"
+                [(ngModel)]="socSpecific.socSpecificName"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.socSpecificCode" for="field_socSpecificCode">Soc Specific Code</label>
+            <input type="text" class="form-control" name="socSpecificCode" id="field_socSpecificCode"
+                [(ngModel)]="socSpecific.socSpecificCode"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.socSpecificAvator" for="field_socSpecificAvator">Soc Specific Avator</label>
+            <div>
+                <img [src]="'data:' + socSpecific.socSpecificAvatorContentType + ';base64,' + socSpecific.socSpecificAvator" style="max-height: 100px;" *ngIf="socSpecific.socSpecificAvator" alt="socSpecific image"/>
+                <div *ngIf="socSpecific.socSpecificAvator" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{socSpecific.socSpecificAvatorContentType}}, {{byteSize(socSpecific.socSpecificAvator)}}</span>
+                    <button type="button" (click)="clearInputImage('socSpecificAvator', 'socSpecificAvatorContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_socSpecificAvator" (change)="setFileData($event, socSpecific, 'socSpecificAvator', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="socSpecificAvator" id="field_socSpecificAvator"
+                [(ngModel)]="socSpecific.socSpecificAvator"  />
+            <input type="hidden" class="form-control" name="socSpecificAvatorContentType" id="field_socSpecificAvatorContentType"
+                [(ngModel)]="socSpecific.socSpecificAvatorContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.socSpecificDescription" for="field_socSpecificDescription">Soc Specific Description</label>
+            <input type="text" class="form-control" name="socSpecificDescription" id="field_socSpecificDescription"
+                [(ngModel)]="socSpecific.socSpecificDescription"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.socSpecificURL" for="field_socSpecificURL">Soc Specific URL</label>
+            <input type="text" class="form-control" name="socSpecificURL" id="field_socSpecificURL"
+                [(ngModel)]="socSpecific.socSpecificURL"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.socSpecificPreviewImage" for="field_socSpecificPreviewImage">Soc Specific Preview Image</label>
+            <input type="text" class="form-control" name="socSpecificPreviewImage" id="field_socSpecificPreviewImage"
+                [(ngModel)]="socSpecific.socSpecificPreviewImage"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.group" for="field_group">Group</label>
+            <select class="form-control" name="group" [(ngModel)]="socSpecific.group" id="field_group" >
+                <option value="MAIN">{{'barbicanApp.Group.MAIN' | translate}}</option>
+                <option value="MAJOR">{{'barbicanApp.Group.MAJOR' | translate}}</option>
+                <option value="ROLE">{{'barbicanApp.Group.ROLE' | translate}}</option>
+                <option value="TITLED">{{'barbicanApp.Group.TITLED' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.totEmp" for="field_totEmp">Tot Emp</label>
+            <input type="number" class="form-control" name="totEmp" id="field_totEmp"
+                [(ngModel)]="socSpecific.totEmp"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.empPrse" for="field_empPrse">Emp Prse</label>
+            <input type="number" class="form-control" name="empPrse" id="field_empPrse"
+                [(ngModel)]="socSpecific.empPrse"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.hourlyMean" for="field_hourlyMean">Hourly Mean</label>
+            <input type="number" class="form-control" name="hourlyMean" id="field_hourlyMean"
+                [(ngModel)]="socSpecific.hourlyMean"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.annualMean" for="field_annualMean">Annual Mean</label>
+            <input type="number" class="form-control" name="annualMean" id="field_annualMean"
+                [(ngModel)]="socSpecific.annualMean"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.meanPrse" for="field_meanPrse">Mean Prse</label>
+            <input type="number" class="form-control" name="meanPrse" id="field_meanPrse"
+                [(ngModel)]="socSpecific.meanPrse"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.hrPctHighest" for="field_hrPctHighest">Hr Pct Highest</label>
+            <input type="number" class="form-control" name="hrPctHighest" id="field_hrPctHighest"
+                [(ngModel)]="socSpecific.hrPctHighest"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.hrPctHigh" for="field_hrPctHigh">Hr Pct High</label>
+            <input type="number" class="form-control" name="hrPctHigh" id="field_hrPctHigh"
+                [(ngModel)]="socSpecific.hrPctHigh"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.hourlyMedian" for="field_hourlyMedian">Hourly Median</label>
+            <input type="number" class="form-control" name="hourlyMedian" id="field_hourlyMedian"
+                [(ngModel)]="socSpecific.hourlyMedian"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.hrPctBelow" for="field_hrPctBelow">Hr Pct Below</label>
+            <input type="number" class="form-control" name="hrPctBelow" id="field_hrPctBelow"
+                [(ngModel)]="socSpecific.hrPctBelow"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.hrPctLowest" for="field_hrPctLowest">Hr Pct Lowest</label>
+            <input type="number" class="form-control" name="hrPctLowest" id="field_hrPctLowest"
+                [(ngModel)]="socSpecific.hrPctLowest"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.anPctHighest" for="field_anPctHighest">An Pct Highest</label>
+            <input type="number" class="form-control" name="anPctHighest" id="field_anPctHighest"
+                [(ngModel)]="socSpecific.anPctHighest"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.anPctHigh" for="field_anPctHigh">An Pct High</label>
+            <input type="number" class="form-control" name="anPctHigh" id="field_anPctHigh"
+                [(ngModel)]="socSpecific.anPctHigh"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.annualMedian" for="field_annualMedian">Annual Median</label>
+            <input type="number" class="form-control" name="annualMedian" id="field_annualMedian"
+                [(ngModel)]="socSpecific.annualMedian"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.anPctBelow" for="field_anPctBelow">An Pct Below</label>
+            <input type="number" class="form-control" name="anPctBelow" id="field_anPctBelow"
+                [(ngModel)]="socSpecific.anPctBelow"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.anPctLowest" for="field_anPctLowest">An Pct Lowest</label>
+            <input type="number" class="form-control" name="anPctLowest" id="field_anPctLowest"
+                [(ngModel)]="socSpecific.anPctLowest"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.socBroad" for="field_socBroad">Soc Broad</label>
+            <select class="form-control" id="field_socBroad" name="socBroad" [(ngModel)]="socSpecific.socBroadId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="socBroadOption.id" *ngFor="let socBroadOption of socbroads; trackBy: trackSocBroadById">{{socBroadOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.socSpecific.skills" for="field_skills">Skills</label>
+            <select class="form-control" id="field_skills" name="skills" [(ngModel)]="socSpecific.skillsId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="skillsOption.id" *ngFor="let skillsOption of skills; trackBy: trackSkillsById">{{skillsOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

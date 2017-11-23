@@ -1,0 +1,47 @@
+{
+    "barbicanApp": {
+        "skills" : {
+            "home": {
+                "title": "Skills",
+                "createLabel": "Create a new Skills",
+                "createOrEditLabel": "Create or edit a Skills",
+                "search": "Search for Skills"
+            },
+            "created": "A new Skills is created with identifier {{ param }}",
+            "updated": "A Skills is updated with identifier {{ param }}",
+            "deleted": "A Skills is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Skills {{ id }}?"
+            },
+            "detail": {
+                "title": "Skills"
+            },
+            "socSpecificSkName": "Soc Specific Sk Name",
+            "socSpecificSkCode": "Soc Specific Sk Code",
+            "anDaInLv": "An Da In Lv",
+            "anDaInIm": "An Da In Im",
+            "asCaOthLv": "As Ca Oth Lv",
+            "asCaOthIm": "As Ca Oth Im",
+            "coDevOthLv": "Co Dev Oth Lv",
+            "coDevOthIm": "Co Dev Oth Im",
+            "coPerOutOrgLv": "Co Per Out Org Lv",
+            "coPerOutOrgIm": "Co Per Out Org Im",
+            "coSupPeSubLv": "Co Sup Pe Sub Lv",
+            "coSupPeSubIm": "Co Sup Pe Sub Im",
+            "conMaProLv": "Con Ma Pro Lv",
+            "conMaProIm": "Con Ma Pro Im",
+            "cooWorActOthLv": "Coo Wor Act Oth Lv",
+            "cooWorActOthIm": "Coo Wor Act Oth Im",
+            "devBuildTeamsLv": "Dev Build Teams Lv",
+            "devBuildTeamsIm": "Dev Build Teams Im",
+            "devObjStratLv": "Dev Obj Strat Lv",
+            "devObjStratIm": "Dev Obj Strat Im",
+            "docRecInfoLv": "Doc Rec Info Lv",
+            "docRecInfoIm": "Doc Rec Info Im",
+            "drLayOutSpecLv": "Dr Lay Out Spec Lv",
+            "drLayOutSpecIm": "Dr Lay Out Spec Im",
+            "estMaIntRelLv": "Est Ma Int Rel Lv",
+            "estMaIntRelIm": "Est Ma Int Rel Im"
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "barbicanApp": {
+        "socSpecific" : {
+            "home": {
+                "title": "Soc Specifics",
+                "createLabel": "Crear nuevo Soc Specific",
+                "createOrEditLabel": "Crear o editar Soc Specific",
+                "search": "Search for Soc Specific"
+            },
+            "created": "Un nuevo Soc Specific ha sido creado con el identificador {{ param }}",
+            "updated": "Un Soc Specific ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Soc Specific ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Soc Specific {{ id }}?"
+            },
+            "detail": {
+                "title": "Soc Specific"
+            },
+            "socSpecificName": "Soc Specific Name",
+            "socSpecificCode": "Soc Specific Code",
+            "socSpecificAvator": "Soc Specific Avator",
+            "socSpecificDescription": "Soc Specific Description",
+            "socSpecificURL": "Soc Specific URL",
+            "socSpecificPreviewImage": "Soc Specific Preview Image",
+            "group": "Group",
+            "totEmp": "Tot Emp",
+            "empPrse": "Emp Prse",
+            "hourlyMean": "Hourly Mean",
+            "annualMean": "Annual Mean",
+            "meanPrse": "Mean Prse",
+            "hrPctHighest": "Hr Pct Highest",
+            "hrPctHigh": "Hr Pct High",
+            "hourlyMedian": "Hourly Median",
+            "hrPctBelow": "Hr Pct Below",
+            "hrPctLowest": "Hr Pct Lowest",
+            "anPctHighest": "An Pct Highest",
+            "anPctHigh": "An Pct High",
+            "annualMedian": "Annual Median",
+            "anPctBelow": "An Pct Below",
+            "anPctLowest": "An Pct Lowest",
+            "socBroad": "Soc Broad",
+            "skills": "Skills",
+            "employee": "Employee"
+        }
+    }
+}

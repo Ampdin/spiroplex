@@ -9,7 +9,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -68,7 +68,7 @@ public class Task implements Serializable {
     private String notRelevant;
 
     @Column(name = "jhi_date")
-    private ZonedDateTime date;
+    private LocalDate date;
 
     @Column(name = "domain_source")
     private String domainSource;
@@ -246,16 +246,16 @@ public class Task implements Serializable {
         this.notRelevant = notRelevant;
     }
 
-    public ZonedDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public Task date(ZonedDateTime date) {
+    public Task date(LocalDate date) {
         this.date = date;
         return this;
     }
 
-    public void setDate(ZonedDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

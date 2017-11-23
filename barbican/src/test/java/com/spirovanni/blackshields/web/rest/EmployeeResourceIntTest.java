@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.ZoneOffset;
@@ -68,8 +69,11 @@ public class EmployeeResourceIntTest {
     private static final String DEFAULT_BADGE_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_BADGE_NUMBER = "BBBBBBBBBB";
 
-    private static final ZonedDateTime DEFAULT_START_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_START_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDate DEFAULT_START_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_START_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final ZonedDateTime DEFAULT_MEMBER_SINCE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_MEMBER_SINCE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final Long DEFAULT_PREVIOUS_SALARY = 1L;
     private static final Long UPDATED_PREVIOUS_SALARY = 2L;
@@ -152,6 +156,7 @@ public class EmployeeResourceIntTest {
             .phone(DEFAULT_PHONE)
             .badgeNumber(DEFAULT_BADGE_NUMBER)
             .startDate(DEFAULT_START_DATE)
+            .memberSince(DEFAULT_MEMBER_SINCE)
             .previousSalary(DEFAULT_PREVIOUS_SALARY)
             .currentSalary(DEFAULT_CURRENT_SALARY)
             .goalSalary(DEFAULT_GOAL_SALARY)
@@ -195,6 +200,7 @@ public class EmployeeResourceIntTest {
         assertThat(testEmployee.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testEmployee.getBadgeNumber()).isEqualTo(DEFAULT_BADGE_NUMBER);
         assertThat(testEmployee.getStartDate()).isEqualTo(DEFAULT_START_DATE);
+        assertThat(testEmployee.getMemberSince()).isEqualTo(DEFAULT_MEMBER_SINCE);
         assertThat(testEmployee.getPreviousSalary()).isEqualTo(DEFAULT_PREVIOUS_SALARY);
         assertThat(testEmployee.getCurrentSalary()).isEqualTo(DEFAULT_CURRENT_SALARY);
         assertThat(testEmployee.getGoalSalary()).isEqualTo(DEFAULT_GOAL_SALARY);
@@ -249,7 +255,8 @@ public class EmployeeResourceIntTest {
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
             .andExpect(jsonPath("$.[*].badgeNumber").value(hasItem(DEFAULT_BADGE_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].startDate").value(hasItem(sameInstant(DEFAULT_START_DATE))))
+            .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
+            .andExpect(jsonPath("$.[*].memberSince").value(hasItem(sameInstant(DEFAULT_MEMBER_SINCE))))
             .andExpect(jsonPath("$.[*].previousSalary").value(hasItem(DEFAULT_PREVIOUS_SALARY.intValue())))
             .andExpect(jsonPath("$.[*].currentSalary").value(hasItem(DEFAULT_CURRENT_SALARY.intValue())))
             .andExpect(jsonPath("$.[*].goalSalary").value(hasItem(DEFAULT_GOAL_SALARY.intValue())))
@@ -280,7 +287,8 @@ public class EmployeeResourceIntTest {
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
             .andExpect(jsonPath("$.badgeNumber").value(DEFAULT_BADGE_NUMBER.toString()))
-            .andExpect(jsonPath("$.startDate").value(sameInstant(DEFAULT_START_DATE)))
+            .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
+            .andExpect(jsonPath("$.memberSince").value(sameInstant(DEFAULT_MEMBER_SINCE)))
             .andExpect(jsonPath("$.previousSalary").value(DEFAULT_PREVIOUS_SALARY.intValue()))
             .andExpect(jsonPath("$.currentSalary").value(DEFAULT_CURRENT_SALARY.intValue()))
             .andExpect(jsonPath("$.goalSalary").value(DEFAULT_GOAL_SALARY.intValue()))
@@ -320,6 +328,7 @@ public class EmployeeResourceIntTest {
             .phone(UPDATED_PHONE)
             .badgeNumber(UPDATED_BADGE_NUMBER)
             .startDate(UPDATED_START_DATE)
+            .memberSince(UPDATED_MEMBER_SINCE)
             .previousSalary(UPDATED_PREVIOUS_SALARY)
             .currentSalary(UPDATED_CURRENT_SALARY)
             .goalSalary(UPDATED_GOAL_SALARY)
@@ -349,6 +358,7 @@ public class EmployeeResourceIntTest {
         assertThat(testEmployee.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testEmployee.getBadgeNumber()).isEqualTo(UPDATED_BADGE_NUMBER);
         assertThat(testEmployee.getStartDate()).isEqualTo(UPDATED_START_DATE);
+        assertThat(testEmployee.getMemberSince()).isEqualTo(UPDATED_MEMBER_SINCE);
         assertThat(testEmployee.getPreviousSalary()).isEqualTo(UPDATED_PREVIOUS_SALARY);
         assertThat(testEmployee.getCurrentSalary()).isEqualTo(UPDATED_CURRENT_SALARY);
         assertThat(testEmployee.getGoalSalary()).isEqualTo(UPDATED_GOAL_SALARY);
@@ -425,7 +435,8 @@ public class EmployeeResourceIntTest {
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
             .andExpect(jsonPath("$.[*].badgeNumber").value(hasItem(DEFAULT_BADGE_NUMBER.toString())))
-            .andExpect(jsonPath("$.[*].startDate").value(hasItem(sameInstant(DEFAULT_START_DATE))))
+            .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
+            .andExpect(jsonPath("$.[*].memberSince").value(hasItem(sameInstant(DEFAULT_MEMBER_SINCE))))
             .andExpect(jsonPath("$.[*].previousSalary").value(hasItem(DEFAULT_PREVIOUS_SALARY.intValue())))
             .andExpect(jsonPath("$.[*].currentSalary").value(hasItem(DEFAULT_CURRENT_SALARY.intValue())))
             .andExpect(jsonPath("$.[*].goalSalary").value(hasItem(DEFAULT_GOAL_SALARY.intValue())))

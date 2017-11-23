@@ -70,7 +70,7 @@ export class TaskMySuffixService {
     private convertItemFromServer(json: any): TaskMySuffix {
         const entity: TaskMySuffix = Object.assign(new TaskMySuffix(), json);
         entity.date = this.dateUtils
-            .convertDateTimeFromServer(json.date);
+            .convertLocalDateFromServer(json.date);
         return entity;
     }
 
@@ -79,8 +79,8 @@ export class TaskMySuffixService {
      */
     private convert(task: TaskMySuffix): TaskMySuffix {
         const copy: TaskMySuffix = Object.assign({}, task);
-
-        copy.date = this.dateUtils.toDate(task.date);
+        copy.date = this.dateUtils
+            .convertLocalDateToServer(task.date);
         return copy;
     }
 }

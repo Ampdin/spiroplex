@@ -1,11 +1,14 @@
 package com.spirovanni.blackshields.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -25,6 +28,11 @@ public class Region implements Serializable {
 
     @Column(name = "region_name")
     private String regionName;
+
+    @OneToMany(mappedBy = "region")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Country> countries = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -46,6 +54,31 @@ public class Region implements Serializable {
 
     public void setRegionName(String regionName) {
         this.regionName = regionName;
+    }
+
+    public Set<Country> getCountries() {
+        return countries;
+    }
+
+    public Region countries(Set<Country> countries) {
+        this.countries = countries;
+        return this;
+    }
+
+    public Region addCountry(Country country) {
+        this.countries.add(country);
+        country.setRegion(this);
+        return this;
+    }
+
+    public Region removeCountry(Country country) {
+        this.countries.remove(country);
+        country.setRegion(null);
+        return this;
+    }
+
+    public void setCountries(Set<Country> countries) {
+        this.countries = countries;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

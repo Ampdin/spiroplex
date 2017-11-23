@@ -26,7 +26,7 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="barbicanApp.department.location" for="field_location">Location</label>
-            <select class="form-control" id="field_location" name="location" [(ngModel)]="department.locationId">
+            <select class="form-control" id="field_location" name="location" [(ngModel)]="department.locationId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="locationOption.id" *ngFor="let locationOption of locations; trackBy: trackLocationById">{{locationOption.id}}</option>
             </select>

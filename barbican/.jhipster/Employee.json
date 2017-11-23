@@ -2,6 +2,12 @@
     "fluentMethods": true,
     "relationships": [
         {
+            "relationshipName": "socSpecific",
+            "otherEntityName": "socSpecific",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipName": "department",
             "otherEntityName": "department",
             "relationshipType": "many-to-one",
@@ -58,6 +64,10 @@
         },
         {
             "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "memberSince",
             "fieldType": "ZonedDateTime"
         },
         {
@@ -98,7 +108,7 @@
             "fieldTypeBlobContent": "image"
         }
     ],
-    "changelogDate": "20171119201137",
+    "changelogDate": "20171123043909",
     "javadoc": "The Employee entity.",
     "entityTableName": "employee",
     "dto": "mapstruct",

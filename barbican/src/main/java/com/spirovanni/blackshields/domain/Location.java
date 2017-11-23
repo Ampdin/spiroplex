@@ -1,5 +1,6 @@
 package com.spirovanni.blackshields.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -7,6 +8,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -37,9 +40,13 @@ public class Location implements Serializable {
     @Column(name = "state_province")
     private String stateProvince;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private Country country;
+
+    @OneToMany(mappedBy = "location")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Department> departments = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -113,6 +120,31 @@ public class Location implements Serializable {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Set<Department> getDepartments() {
+        return departments;
+    }
+
+    public Location departments(Set<Department> departments) {
+        this.departments = departments;
+        return this;
+    }
+
+    public Location addDepartment(Department department) {
+        this.departments.add(department);
+        department.setLocation(this);
+        return this;
+    }
+
+    public Location removeDepartment(Department department) {
+        this.departments.remove(department);
+        department.setLocation(null);
+        return this;
+    }
+
+    public void setDepartments(Set<Department> departments) {
+        this.departments = departments;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

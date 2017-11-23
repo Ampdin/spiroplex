@@ -44,7 +44,7 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "20171119201140",
+    "changelogDate": "20171123043912",
     "entityTableName": "discipline",
     "dto": "mapstruct",
     "pagination": "no",

@@ -1,7 +1,12 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { BarbicanRegionMySuffixModule } from './region/region-my-suffix.module';
+import { BarbicanSocMajorMySuffixModule } from './soc-major/soc-major-my-suffix.module';
 import { BarbicanCountryMySuffixModule } from './country/country-my-suffix.module';
+import { BarbicanSocMinorMySuffixModule } from './soc-minor/soc-minor-my-suffix.module';
+import { BarbicanSocBroadMySuffixModule } from './soc-broad/soc-broad-my-suffix.module';
+import { BarbicanSocSpecificMySuffixModule } from './soc-specific/soc-specific-my-suffix.module';
+import { BarbicanSkillsMySuffixModule } from './skills/skills-my-suffix.module';
 import { BarbicanLocationMySuffixModule } from './location/location-my-suffix.module';
 import { BarbicanDepartmentMySuffixModule } from './department/department-my-suffix.module';
 import { BarbicanTaskMySuffixModule } from './task/task-my-suffix.module';
@@ -18,7 +23,12 @@ import { BarbicanResourceMySuffixModule } from './resource/resource-my-suffix.mo
 @NgModule({
     imports: [
         BarbicanRegionMySuffixModule,
+        BarbicanSocMajorMySuffixModule,
         BarbicanCountryMySuffixModule,
+        BarbicanSocMinorMySuffixModule,
+        BarbicanSocBroadMySuffixModule,
+        BarbicanSocSpecificMySuffixModule,
+        BarbicanSkillsMySuffixModule,
         BarbicanLocationMySuffixModule,
         BarbicanDepartmentMySuffixModule,
         BarbicanTaskMySuffixModule,

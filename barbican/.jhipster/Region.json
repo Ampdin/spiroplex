@@ -1,13 +1,20 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityRelationshipName": "region"
+        }
+    ],
     "fields": [
         {
             "fieldName": "regionName",
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20171119201132",
+    "changelogDate": "20171123043859",
     "entityTableName": "region",
     "dto": "mapstruct",
     "pagination": "no",

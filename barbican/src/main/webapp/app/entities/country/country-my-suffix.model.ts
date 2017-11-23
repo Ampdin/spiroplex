@@ -5,6 +5,7 @@ export class CountryMySuffix implements BaseEntity {
         public id?: number,
         public countryName?: string,
         public regionId?: number,
+        public locations?: BaseEntity[],
     ) {
     }
 }

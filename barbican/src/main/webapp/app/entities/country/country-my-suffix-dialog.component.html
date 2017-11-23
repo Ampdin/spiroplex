@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="barbicanApp.country.region" for="field_region">Region</label>
-            <select class="form-control" id="field_region" name="region" [(ngModel)]="country.regionId">
+            <select class="form-control" id="field_region" name="region" [(ngModel)]="country.regionId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="regionOption.id" *ngFor="let regionOption of regions; trackBy: trackRegionById">{{regionOption.id}}</option>
             </select>

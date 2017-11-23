@@ -34,19 +34,8 @@ export class CountryMySuffixDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.regionService
-            .query({filter: 'country-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.country.regionId) {
-                    this.regions = res.json;
-                } else {
-                    this.regionService
-                        .find(this.country.regionId)
-                        .subscribe((subRes: RegionMySuffix) => {
-                            this.regions = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.regionService.query()
+            .subscribe((res: ResponseWrapper) => { this.regions = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {

@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { TaskMySuffix } from './task-my-suffix.model';
 import { TaskMySuffixService } from './task-my-suffix.service';
 
@@ -10,7 +9,6 @@ export class TaskMySuffixPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private taskService: TaskMySuffixService
@@ -28,8 +26,13 @@ export class TaskMySuffixPopupService {
 
             if (id) {
                 this.taskService.find(id).subscribe((task) => {
-                    task.date = this.datePipe
-                        .transform(task.date, 'yyyy-MM-ddTHH:mm:ss');
+                    if (task.date) {
+                        task.date = {
+                            year: task.date.getFullYear(),
+                            month: task.date.getMonth() + 1,
+                            day: task.date.getDate()
+                        };
+                    }
                     this.ngbModalRef = this.taskModalRef(component, task);
                     resolve(this.ngbModalRef);
                 });
