@@ -1,0 +1,125 @@
+
+<div *ngIf="skills">
+    <h2><span jhiTranslate="barbicanApp.skills.detail.title">Skills</span> {{skills.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="barbicanApp.skills.socSpecificSkName">Soc Specific Sk Name</span></dt>
+        <dd>
+            <span>{{skills.socSpecificSkName}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.socSpecificSkCode">Soc Specific Sk Code</span></dt>
+        <dd>
+            <span>{{skills.socSpecificSkCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.anDaInLv">An Da In Lv</span></dt>
+        <dd>
+            <span>{{skills.anDaInLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.anDaInIm">An Da In Im</span></dt>
+        <dd>
+            <span>{{skills.anDaInIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.asCaOthLv">As Ca Oth Lv</span></dt>
+        <dd>
+            <span>{{skills.asCaOthLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.asCaOthIm">As Ca Oth Im</span></dt>
+        <dd>
+            <span>{{skills.asCaOthIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.coDevOthLv">Co Dev Oth Lv</span></dt>
+        <dd>
+            <span>{{skills.coDevOthLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.coDevOthIm">Co Dev Oth Im</span></dt>
+        <dd>
+            <span>{{skills.coDevOthIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.coPerOutOrgLv">Co Per Out Org Lv</span></dt>
+        <dd>
+            <span>{{skills.coPerOutOrgLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.coPerOutOrgIm">Co Per Out Org Im</span></dt>
+        <dd>
+            <span>{{skills.coPerOutOrgIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.coSupPeSubLv">Co Sup Pe Sub Lv</span></dt>
+        <dd>
+            <span>{{skills.coSupPeSubLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.coSupPeSubIm">Co Sup Pe Sub Im</span></dt>
+        <dd>
+            <span>{{skills.coSupPeSubIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.conMaProLv">Con Ma Pro Lv</span></dt>
+        <dd>
+            <span>{{skills.conMaProLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.conMaProIm">Con Ma Pro Im</span></dt>
+        <dd>
+            <span>{{skills.conMaProIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.cooWorActOthLv">Coo Wor Act Oth Lv</span></dt>
+        <dd>
+            <span>{{skills.cooWorActOthLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.cooWorActOthIm">Coo Wor Act Oth Im</span></dt>
+        <dd>
+            <span>{{skills.cooWorActOthIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.devBuildTeamsLv">Dev Build Teams Lv</span></dt>
+        <dd>
+            <span>{{skills.devBuildTeamsLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.devBuildTeamsIm">Dev Build Teams Im</span></dt>
+        <dd>
+            <span>{{skills.devBuildTeamsIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.devObjStratLv">Dev Obj Strat Lv</span></dt>
+        <dd>
+            <span>{{skills.devObjStratLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.devObjStratIm">Dev Obj Strat Im</span></dt>
+        <dd>
+            <span>{{skills.devObjStratIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.docRecInfoLv">Doc Rec Info Lv</span></dt>
+        <dd>
+            <span>{{skills.docRecInfoLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.docRecInfoIm">Doc Rec Info Im</span></dt>
+        <dd>
+            <span>{{skills.docRecInfoIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.drLayOutSpecLv">Dr Lay Out Spec Lv</span></dt>
+        <dd>
+            <span>{{skills.drLayOutSpecLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.drLayOutSpecIm">Dr Lay Out Spec Im</span></dt>
+        <dd>
+            <span>{{skills.drLayOutSpecIm}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.estMaIntRelLv">Est Ma Int Rel Lv</span></dt>
+        <dd>
+            <span>{{skills.estMaIntRelLv}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.skills.estMaIntRelIm">Est Ma Int Rel Im</span></dt>
+        <dd>
+            <span>{{skills.estMaIntRelIm}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'skills-my-suffix/'+ skills.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

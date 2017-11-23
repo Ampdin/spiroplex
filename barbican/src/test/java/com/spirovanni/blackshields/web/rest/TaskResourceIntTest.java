@@ -26,13 +26,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.ZoneOffset;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-import static com.spirovanni.blackshields.web.rest.TestUtil.sameInstant;
 import static com.spirovanni.blackshields.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -84,8 +81,8 @@ public class TaskResourceIntTest {
     private static final String DEFAULT_NOT_RELEVANT = "AAAAAAAAAA";
     private static final String UPDATED_NOT_RELEVANT = "BBBBBBBBBB";
 
-    private static final ZonedDateTime DEFAULT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final String DEFAULT_DOMAIN_SOURCE = "AAAAAAAAAA";
     private static final String UPDATED_DOMAIN_SOURCE = "BBBBBBBBBB";
@@ -244,7 +241,7 @@ public class TaskResourceIntTest {
             .andExpect(jsonPath("$.[*].upperClBound").value(hasItem(DEFAULT_UPPER_CL_BOUND.intValue())))
             .andExpect(jsonPath("$.[*].recommendSuppress").value(hasItem(DEFAULT_RECOMMEND_SUPPRESS.toString())))
             .andExpect(jsonPath("$.[*].notRelevant").value(hasItem(DEFAULT_NOT_RELEVANT.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].domainSource").value(hasItem(DEFAULT_DOMAIN_SOURCE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
@@ -272,7 +269,7 @@ public class TaskResourceIntTest {
             .andExpect(jsonPath("$.upperClBound").value(DEFAULT_UPPER_CL_BOUND.intValue()))
             .andExpect(jsonPath("$.recommendSuppress").value(DEFAULT_RECOMMEND_SUPPRESS.toString()))
             .andExpect(jsonPath("$.notRelevant").value(DEFAULT_NOT_RELEVANT.toString()))
-            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.domainSource").value(DEFAULT_DOMAIN_SOURCE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
@@ -408,7 +405,7 @@ public class TaskResourceIntTest {
             .andExpect(jsonPath("$.[*].upperClBound").value(hasItem(DEFAULT_UPPER_CL_BOUND.intValue())))
             .andExpect(jsonPath("$.[*].recommendSuppress").value(hasItem(DEFAULT_RECOMMEND_SUPPRESS.toString())))
             .andExpect(jsonPath("$.[*].notRelevant").value(hasItem(DEFAULT_NOT_RELEVANT.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].domainSource").value(hasItem(DEFAULT_DOMAIN_SOURCE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }

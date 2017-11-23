@@ -60,7 +60,7 @@
         },
         {
             "fieldName": "date",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "LocalDate"
         },
         {
             "fieldName": "domainSource",
@@ -71,7 +71,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20171119201136",
+    "changelogDate": "20171123043908",
     "javadoc": "Task entity.\n@author The JHipster team.",
     "entityTableName": "task",
     "dto": "mapstruct",

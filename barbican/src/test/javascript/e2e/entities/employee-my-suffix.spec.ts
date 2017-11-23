@@ -49,8 +49,10 @@ describe('Employee e2e test', () => {
         expect(employeeDialogPage.getPhoneInput()).toMatch('phone');
         employeeDialogPage.setBadgeNumberInput('badgeNumber');
         expect(employeeDialogPage.getBadgeNumberInput()).toMatch('badgeNumber');
-        employeeDialogPage.setStartDateInput(12310020012301);
-        expect(employeeDialogPage.getStartDateInput()).toMatch('2001-12-31T02:30');
+        employeeDialogPage.setStartDateInput('2000-12-31');
+        expect(employeeDialogPage.getStartDateInput()).toMatch('2000-12-31');
+        employeeDialogPage.setMemberSinceInput(12310020012301);
+        expect(employeeDialogPage.getMemberSinceInput()).toMatch('2001-12-31T02:30');
         employeeDialogPage.setPreviousSalaryInput('5');
         expect(employeeDialogPage.getPreviousSalaryInput()).toMatch('5');
         employeeDialogPage.setCurrentSalaryInput('5');
@@ -68,6 +70,7 @@ describe('Employee e2e test', () => {
         employeeDialogPage.setStateInput('state');
         expect(employeeDialogPage.getStateInput()).toMatch('state');
         employeeDialogPage.setEmployeeAvatarInput(absolutePath);
+        employeeDialogPage.socSpecificSelectLastOption();
         employeeDialogPage.departmentSelectLastOption();
         employeeDialogPage.managerSelectLastOption();
         employeeDialogPage.disciplineSelectLastOption();
@@ -105,6 +108,7 @@ export class EmployeeDialogPage {
     phoneInput = element(by.css('input#field_phone'));
     badgeNumberInput = element(by.css('input#field_badgeNumber'));
     startDateInput = element(by.css('input#field_startDate'));
+    memberSinceInput = element(by.css('input#field_memberSince'));
     previousSalaryInput = element(by.css('input#field_previousSalary'));
     currentSalaryInput = element(by.css('input#field_currentSalary'));
     goalSalaryInput = element(by.css('input#field_goalSalary'));
@@ -114,6 +118,7 @@ export class EmployeeDialogPage {
     zipInput = element(by.css('input#field_zip'));
     stateInput = element(by.css('input#field_state'));
     employeeAvatarInput = element(by.css('input#file_employeeAvatar'));
+    socSpecificSelect = element(by.css('select#field_socSpecific'));
     departmentSelect = element(by.css('select#field_department'));
     managerSelect = element(by.css('select#field_manager'));
     disciplineSelect = element(by.css('select#field_discipline'));
@@ -186,6 +191,14 @@ export class EmployeeDialogPage {
         return this.startDateInput.getAttribute('value');
     }
 
+    setMemberSinceInput = function (memberSince) {
+        this.memberSinceInput.sendKeys(memberSince);
+    }
+
+    getMemberSinceInput = function () {
+        return this.memberSinceInput.getAttribute('value');
+    }
+
     setPreviousSalaryInput = function (previousSalary) {
         this.previousSalaryInput.sendKeys(previousSalary);
     }
@@ -256,6 +269,22 @@ export class EmployeeDialogPage {
 
     getEmployeeAvatarInput = function () {
         return this.employeeAvatarInput.getAttribute('value');
+    }
+
+    socSpecificSelectLastOption = function () {
+        this.socSpecificSelect.all(by.tagName('option')).last().click();
+    }
+
+    socSpecificSelectOption = function (option) {
+        this.socSpecificSelect.sendKeys(option);
+    }
+
+    getSocSpecificSelect = function () {
+        return this.socSpecificSelect;
+    }
+
+    getSocSpecificSelectedOption = function () {
+        return this.socSpecificSelect.element(by.css('option:checked')).getText();
     }
 
     departmentSelectLastOption = function () {

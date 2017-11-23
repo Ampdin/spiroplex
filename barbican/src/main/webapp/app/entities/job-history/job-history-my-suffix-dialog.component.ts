@@ -28,6 +28,8 @@ export class JobHistoryMySuffixDialogComponent implements OnInit {
     departments: DepartmentMySuffix[];
 
     employees: EmployeeMySuffix[];
+    startDateDp: any;
+    endDateDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

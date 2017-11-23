@@ -34,7 +34,11 @@
         </dd>
         <dt><span jhiTranslate="barbicanApp.employee.startDate">Start Date</span></dt>
         <dd>
-            <span>{{employee.startDate | date:'medium'}}</span>
+            <span>{{employee.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.memberSince">Member Since</span></dt>
+        <dd>
+            <span>{{employee.memberSince | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="barbicanApp.employee.previousSalary">Previous Salary</span></dt>
         <dd>
@@ -75,6 +79,12 @@
                     <img [src]="'data:' + employee.employeeAvatarContentType + ';base64,' + employee.employeeAvatar" style="max-width: 100%;" alt="employee image"/>
                 </a>
                 {{employee.employeeAvatarContentType}}, {{byteSize(employee.employeeAvatar)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.employee.socSpecific">Soc Specific</span></dt>
+        <dd>
+            <div *ngIf="employee.socSpecificId">
+                <a [routerLink]="['/soc-specific-my-suffix', employee.socSpecificId]">{{employee.socSpecificId}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="barbicanApp.employee.department">Department</span></dt>

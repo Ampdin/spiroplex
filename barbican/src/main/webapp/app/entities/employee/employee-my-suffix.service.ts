@@ -70,7 +70,9 @@ export class EmployeeMySuffixService {
     private convertItemFromServer(json: any): EmployeeMySuffix {
         const entity: EmployeeMySuffix = Object.assign(new EmployeeMySuffix(), json);
         entity.startDate = this.dateUtils
-            .convertDateTimeFromServer(json.startDate);
+            .convertLocalDateFromServer(json.startDate);
+        entity.memberSince = this.dateUtils
+            .convertDateTimeFromServer(json.memberSince);
         return entity;
     }
 
@@ -79,8 +81,10 @@ export class EmployeeMySuffixService {
      */
     private convert(employee: EmployeeMySuffix): EmployeeMySuffix {
         const copy: EmployeeMySuffix = Object.assign({}, employee);
+        copy.startDate = this.dateUtils
+            .convertLocalDateToServer(employee.startDate);
 
-        copy.startDate = this.dateUtils.toDate(employee.startDate);
+        copy.memberSince = this.dateUtils.toDate(employee.memberSince);
         return copy;
     }
 }

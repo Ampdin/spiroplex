@@ -8,6 +8,7 @@ export class LocationMySuffix implements BaseEntity {
         public city?: string,
         public stateProvince?: string,
         public countryId?: number,
+        public departments?: BaseEntity[],
     ) {
     }
 }

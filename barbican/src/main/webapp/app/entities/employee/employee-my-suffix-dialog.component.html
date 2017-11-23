@@ -49,8 +49,18 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="barbicanApp.employee.startDate" for="field_startDate">Start Date</label>
+            <div class="input-group">
+                <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="employee.startDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.employee.memberSince" for="field_memberSince">Member Since</label>
             <div class="d-flex">
-                <input id="field_startDate" type="datetime-local" class="form-control" name="startDate" [(ngModel)]="employee.startDate"
+                <input id="field_memberSince" type="datetime-local" class="form-control" name="memberSince" [(ngModel)]="employee.memberSince"
                   />
             </div>
         </div>
@@ -112,6 +122,13 @@
                 [(ngModel)]="employee.employeeAvatarContentType" />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="barbicanApp.employee.socSpecific" for="field_socSpecific">Soc Specific</label>
+            <select class="form-control" id="field_socSpecific" name="socSpecific" [(ngModel)]="employee.socSpecificId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="socSpecificOption.id" *ngFor="let socSpecificOption of socspecifics; trackBy: trackSocSpecificById">{{socSpecificOption.id}}</option>
+            </select>
+        </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="barbicanApp.employee.department" for="field_department">Department</label>
             <select class="form-control" id="field_department" name="department" [(ngModel)]="employee.departmentId" >

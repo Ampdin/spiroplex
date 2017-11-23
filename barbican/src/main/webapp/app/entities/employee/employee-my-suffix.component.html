@@ -38,6 +38,7 @@
             <th jhiSortBy="phone"><span jhiTranslate="barbicanApp.employee.phone">Phone</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="badgeNumber"><span jhiTranslate="barbicanApp.employee.badgeNumber">Badge Number</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="startDate"><span jhiTranslate="barbicanApp.employee.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="memberSince"><span jhiTranslate="barbicanApp.employee.memberSince">Member Since</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="previousSalary"><span jhiTranslate="barbicanApp.employee.previousSalary">Previous Salary</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="currentSalary"><span jhiTranslate="barbicanApp.employee.currentSalary">Current Salary</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="goalSalary"><span jhiTranslate="barbicanApp.employee.goalSalary">Goal Salary</span> <span class="fa fa-sort"></span></th>
@@ -47,6 +48,7 @@
             <th jhiSortBy="zip"><span jhiTranslate="barbicanApp.employee.zip">Zip</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="state"><span jhiTranslate="barbicanApp.employee.state">State</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="employeeAvatar"><span jhiTranslate="barbicanApp.employee.employeeAvatar">Employee Avatar</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="socSpecificId"><span jhiTranslate="barbicanApp.employee.socSpecific">Soc Specific</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="departmentId"><span jhiTranslate="barbicanApp.employee.department">Department</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="managerId"><span jhiTranslate="barbicanApp.employee.manager">Manager</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="disciplineId"><span jhiTranslate="barbicanApp.employee.discipline">Discipline</span> <span class="fa fa-sort"></span></th>
@@ -63,7 +65,8 @@
                 <td>{{employee.email}}</td>
                 <td>{{employee.phone}}</td>
                 <td>{{employee.badgeNumber}}</td>
-                <td>{{employee.startDate | date:'medium'}}</td>
+                <td>{{employee.startDate | date:'mediumDate'}}</td>
+                <td>{{employee.memberSince | date:'medium'}}</td>
                 <td>{{employee.previousSalary}}</td>
                 <td>{{employee.currentSalary}}</td>
                 <td>{{employee.goalSalary}}</td>
@@ -77,6 +80,11 @@
                         <img [src]="'data:' + employee.employeeAvatarContentType + ';base64,' + employee.employeeAvatar" style="max-height: 30px;" alt="employee image"/>
                     </a>
                     <span *ngIf="employee.employeeAvatar">{{employee.employeeAvatarContentType}}, {{byteSize(employee.employeeAvatar)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="employee.socSpecificId">
+                        <a [routerLink]="['../soc-specific-my-suffix', employee.socSpecificId  ]" >{{employee.socSpecificId}}</a>
+                    </div>
                 </td>
                 <td>
                     <div *ngIf="employee.departmentId">

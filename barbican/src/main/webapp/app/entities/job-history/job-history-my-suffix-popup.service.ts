@@ -1,7 +1,6 @@
 import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 import { JobHistoryMySuffix } from './job-history-my-suffix.model';
 import { JobHistoryMySuffixService } from './job-history-my-suffix.service';
 
@@ -10,7 +9,6 @@ export class JobHistoryMySuffixPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
-        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private jobHistoryService: JobHistoryMySuffixService
@@ -28,10 +26,20 @@ export class JobHistoryMySuffixPopupService {
 
             if (id) {
                 this.jobHistoryService.find(id).subscribe((jobHistory) => {
-                    jobHistory.startDate = this.datePipe
-                        .transform(jobHistory.startDate, 'yyyy-MM-ddTHH:mm:ss');
-                    jobHistory.endDate = this.datePipe
-                        .transform(jobHistory.endDate, 'yyyy-MM-ddTHH:mm:ss');
+                    if (jobHistory.startDate) {
+                        jobHistory.startDate = {
+                            year: jobHistory.startDate.getFullYear(),
+                            month: jobHistory.startDate.getMonth() + 1,
+                            day: jobHistory.startDate.getDate()
+                        };
+                    }
+                    if (jobHistory.endDate) {
+                        jobHistory.endDate = {
+                            year: jobHistory.endDate.getFullYear(),
+                            month: jobHistory.endDate.getMonth() + 1,
+                            day: jobHistory.endDate.getDate()
+                        };
+                    }
                     this.ngbModalRef = this.jobHistoryModalRef(component, jobHistory);
                     resolve(this.ngbModalRef);
                 });

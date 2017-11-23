@@ -28,8 +28,15 @@ export class EmployeeMySuffixPopupService {
 
             if (id) {
                 this.employeeService.find(id).subscribe((employee) => {
-                    employee.startDate = this.datePipe
-                        .transform(employee.startDate, 'yyyy-MM-ddTHH:mm:ss');
+                    if (employee.startDate) {
+                        employee.startDate = {
+                            year: employee.startDate.getFullYear(),
+                            month: employee.startDate.getMonth() + 1,
+                            day: employee.startDate.getDate()
+                        };
+                    }
+                    employee.memberSince = this.datePipe
+                        .transform(employee.memberSince, 'yyyy-MM-ddTHH:mm:ss');
                     this.ngbModalRef = this.employeeModalRef(component, employee);
                     resolve(this.ngbModalRef);
                 });

@@ -45,7 +45,7 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "20171119201141",
+    "changelogDate": "20171123043913",
     "entityTableName": "program",
     "dto": "mapstruct",
     "pagination": "pagination",

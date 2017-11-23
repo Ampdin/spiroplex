@@ -2,11 +2,15 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
             "relationshipName": "region",
             "otherEntityName": "region",
-            "otherEntityField": "id",
-            "ownerSide": true,
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "location",
+            "otherEntityName": "location",
             "otherEntityRelationshipName": "country"
         }
     ],
@@ -16,7 +20,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20171119201133",
+    "changelogDate": "20171123043901",
     "entityTableName": "country",
     "dto": "mapstruct",
     "pagination": "no",

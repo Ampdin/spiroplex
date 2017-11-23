@@ -35,10 +35,10 @@ describe('JobHistory e2e test', () => {
 
     it('should create and save JobHistories', () => {
         jobHistoryComponentsPage.clickOnCreateButton();
-        jobHistoryDialogPage.setStartDateInput(12310020012301);
-        expect(jobHistoryDialogPage.getStartDateInput()).toMatch('2001-12-31T02:30');
-        jobHistoryDialogPage.setEndDateInput(12310020012301);
-        expect(jobHistoryDialogPage.getEndDateInput()).toMatch('2001-12-31T02:30');
+        jobHistoryDialogPage.setStartDateInput('2000-12-31');
+        expect(jobHistoryDialogPage.getStartDateInput()).toMatch('2000-12-31');
+        jobHistoryDialogPage.setEndDateInput('2000-12-31');
+        expect(jobHistoryDialogPage.getEndDateInput()).toMatch('2000-12-31');
         jobHistoryDialogPage.languageSelectLastOption();
         jobHistoryDialogPage.jobSelectLastOption();
         jobHistoryDialogPage.departmentSelectLastOption();

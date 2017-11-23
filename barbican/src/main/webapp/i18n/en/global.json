@@ -8,7 +8,12 @@
             "entities": {
                 "main": "Entities",
                 "regionMySuffix": "Region",
+                "socMajorMySuffix": "Soc Major",
                 "countryMySuffix": "Country",
+                "socMinorMySuffix": "Soc Minor",
+                "socBroadMySuffix": "Soc Broad",
+                "socSpecificMySuffix": "Soc Specific",
+                "skillsMySuffix": "Skills",
                 "locationMySuffix": "Location",
                 "departmentMySuffix": "Department",
                 "taskMySuffix": "Task",

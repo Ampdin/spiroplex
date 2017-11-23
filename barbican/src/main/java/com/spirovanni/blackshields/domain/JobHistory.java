@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import com.spirovanni.blackshields.domain.enumeration.Language;
@@ -27,10 +27,10 @@ public class JobHistory implements Serializable {
     private Long id;
 
     @Column(name = "start_date")
-    private ZonedDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private ZonedDateTime endDate;
+    private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "language")
@@ -57,29 +57,29 @@ public class JobHistory implements Serializable {
         this.id = id;
     }
 
-    public ZonedDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public JobHistory startDate(ZonedDateTime startDate) {
+    public JobHistory startDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
 
-    public void setStartDate(ZonedDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public ZonedDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public JobHistory endDate(ZonedDateTime endDate) {
+    public JobHistory endDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
     }
 
-    public void setEndDate(ZonedDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

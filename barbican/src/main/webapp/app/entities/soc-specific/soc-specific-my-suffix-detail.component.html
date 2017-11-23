@@ -1,0 +1,126 @@
+
+<div *ngIf="socSpecific">
+    <h2><span jhiTranslate="barbicanApp.socSpecific.detail.title">Soc Specific</span> {{socSpecific.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="barbicanApp.socSpecific.socSpecificName">Soc Specific Name</span></dt>
+        <dd>
+            <span>{{socSpecific.socSpecificName}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.socSpecificCode">Soc Specific Code</span></dt>
+        <dd>
+            <span>{{socSpecific.socSpecificCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.socSpecificAvator">Soc Specific Avator</span></dt>
+        <dd>
+            <div *ngIf="socSpecific.socSpecificAvator">
+                <a (click)="openFile(socSpecific.socSpecificAvatorContentType, socSpecific.socSpecificAvator)">
+                    <img [src]="'data:' + socSpecific.socSpecificAvatorContentType + ';base64,' + socSpecific.socSpecificAvator" style="max-width: 100%;" alt="socSpecific image"/>
+                </a>
+                {{socSpecific.socSpecificAvatorContentType}}, {{byteSize(socSpecific.socSpecificAvator)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.socSpecificDescription">Soc Specific Description</span></dt>
+        <dd>
+            <span>{{socSpecific.socSpecificDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.socSpecificURL">Soc Specific URL</span></dt>
+        <dd>
+            <span>{{socSpecific.socSpecificURL}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.socSpecificPreviewImage">Soc Specific Preview Image</span></dt>
+        <dd>
+            <span>{{socSpecific.socSpecificPreviewImage}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.group">Group</span></dt>
+        <dd>
+            <span jhiTranslate="{{'barbicanApp.Group.' + socSpecific.group}}">{{socSpecific.group}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.totEmp">Tot Emp</span></dt>
+        <dd>
+            <span>{{socSpecific.totEmp}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.empPrse">Emp Prse</span></dt>
+        <dd>
+            <span>{{socSpecific.empPrse}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.hourlyMean">Hourly Mean</span></dt>
+        <dd>
+            <span>{{socSpecific.hourlyMean}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.annualMean">Annual Mean</span></dt>
+        <dd>
+            <span>{{socSpecific.annualMean}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.meanPrse">Mean Prse</span></dt>
+        <dd>
+            <span>{{socSpecific.meanPrse}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.hrPctHighest">Hr Pct Highest</span></dt>
+        <dd>
+            <span>{{socSpecific.hrPctHighest}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.hrPctHigh">Hr Pct High</span></dt>
+        <dd>
+            <span>{{socSpecific.hrPctHigh}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.hourlyMedian">Hourly Median</span></dt>
+        <dd>
+            <span>{{socSpecific.hourlyMedian}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.hrPctBelow">Hr Pct Below</span></dt>
+        <dd>
+            <span>{{socSpecific.hrPctBelow}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.hrPctLowest">Hr Pct Lowest</span></dt>
+        <dd>
+            <span>{{socSpecific.hrPctLowest}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.anPctHighest">An Pct Highest</span></dt>
+        <dd>
+            <span>{{socSpecific.anPctHighest}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.anPctHigh">An Pct High</span></dt>
+        <dd>
+            <span>{{socSpecific.anPctHigh}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.annualMedian">Annual Median</span></dt>
+        <dd>
+            <span>{{socSpecific.annualMedian}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.anPctBelow">An Pct Below</span></dt>
+        <dd>
+            <span>{{socSpecific.anPctBelow}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.anPctLowest">An Pct Lowest</span></dt>
+        <dd>
+            <span>{{socSpecific.anPctLowest}}</span>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.socBroad">Soc Broad</span></dt>
+        <dd>
+            <div *ngIf="socSpecific.socBroadId">
+                <a [routerLink]="['/soc-broad-my-suffix', socSpecific.socBroadId]">{{socSpecific.socBroadId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="barbicanApp.socSpecific.skills">Skills</span></dt>
+        <dd>
+            <div *ngIf="socSpecific.skillsId">
+                <a [routerLink]="['/skills-my-suffix', socSpecific.skillsId]">{{socSpecific.skillsId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'soc-specific-my-suffix/'+ socSpecific.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

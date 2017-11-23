@@ -34,19 +34,8 @@ export class DepartmentMySuffixDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.locationService
-            .query({filter: 'department-is-null'})
-            .subscribe((res: ResponseWrapper) => {
-                if (!this.department.locationId) {
-                    this.locations = res.json;
-                } else {
-                    this.locationService
-                        .find(this.department.locationId)
-                        .subscribe((subRes: LocationMySuffix) => {
-                            this.locations = [subRes].concat(res.json);
-                        }, (subRes: ResponseWrapper) => this.onError(subRes.json));
-                }
-            }, (res: ResponseWrapper) => this.onError(res.json));
+        this.locationService.query()
+            .subscribe((res: ResponseWrapper) => { this.locations = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {

@@ -70,9 +70,9 @@ export class JobHistoryMySuffixService {
     private convertItemFromServer(json: any): JobHistoryMySuffix {
         const entity: JobHistoryMySuffix = Object.assign(new JobHistoryMySuffix(), json);
         entity.startDate = this.dateUtils
-            .convertDateTimeFromServer(json.startDate);
+            .convertLocalDateFromServer(json.startDate);
         entity.endDate = this.dateUtils
-            .convertDateTimeFromServer(json.endDate);
+            .convertLocalDateFromServer(json.endDate);
         return entity;
     }
 
@@ -81,10 +81,10 @@ export class JobHistoryMySuffixService {
      */
     private convert(jobHistory: JobHistoryMySuffix): JobHistoryMySuffix {
         const copy: JobHistoryMySuffix = Object.assign({}, jobHistory);
-
-        copy.startDate = this.dateUtils.toDate(jobHistory.startDate);
-
-        copy.endDate = this.dateUtils.toDate(jobHistory.endDate);
+        copy.startDate = this.dateUtils
+            .convertLocalDateToServer(jobHistory.startDate);
+        copy.endDate = this.dateUtils
+            .convertLocalDateToServer(jobHistory.endDate);
         return copy;
     }
 }

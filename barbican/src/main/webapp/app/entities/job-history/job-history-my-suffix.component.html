@@ -42,8 +42,8 @@
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let jobHistory of jobHistories ;trackBy: trackId">
                 <td><a [routerLink]="['../job-history-my-suffix', jobHistory.id ]">{{jobHistory.id}}</a></td>
-                <td>{{jobHistory.startDate | date:'medium'}}</td>
-                <td>{{jobHistory.endDate | date:'medium'}}</td>
+                <td>{{jobHistory.startDate | date:'mediumDate'}}</td>
+                <td>{{jobHistory.endDate | date:'mediumDate'}}</td>
                 <td jhiTranslate="{{'barbicanApp.Language.' + jobHistory.language}}">{{jobHistory.language}}</td>
                 <td>
                     <div *ngIf="jobHistory.jobId">

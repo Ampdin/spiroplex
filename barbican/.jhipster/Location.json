@@ -2,11 +2,15 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
             "relationshipName": "country",
             "otherEntityName": "country",
-            "otherEntityField": "id",
-            "ownerSide": true,
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "department",
+            "otherEntityName": "department",
             "otherEntityRelationshipName": "location"
         }
     ],
@@ -28,7 +32,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20171119201134",
+    "changelogDate": "20171123043906",
     "javadoc": "not an ignored comment",
     "entityTableName": "location",
     "dto": "mapstruct",

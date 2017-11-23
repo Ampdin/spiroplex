@@ -2,12 +2,10 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
             "relationshipName": "location",
             "otherEntityName": "location",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "department"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "one-to-many",
@@ -25,7 +23,7 @@
             ]
         }
     ],
-    "changelogDate": "20171119201135",
+    "changelogDate": "20171123043907",
     "entityTableName": "department",
     "dto": "mapstruct",
     "pagination": "no",

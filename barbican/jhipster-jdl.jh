@@ -2,8 +2,89 @@ entity Region {
 	regionName String
 }
 
+entity SocMajor {
+	socMajorName String,
+    socMajorCode String,
+    socMajorAvator ImageBlob,
+    socMajorDescription String,
+    socMajorURL String,
+    socMajorPreviewImage String
+}
+
 entity Country {
 	countryName String
+}
+
+entity SocMinor {
+	socMinorName String,
+    socMinorCode String,
+    socMinorAvator ImageBlob,
+    socMinorDescription String,
+    socMinorURL String,
+    socMinorPreviewImage String
+}
+
+entity SocBroad {
+	socBroadName String,
+    socBroadCode String,
+    socBroadAvator ImageBlob,
+    socBroadDescription String,
+    socBroadURL String,
+    socBroadPreviewImage String
+}
+
+entity SocSpecific {
+	socSpecificName String,
+    socSpecificCode String,
+    socSpecificAvator ImageBlob,
+    socSpecificDescription String,
+    socSpecificURL String,
+    socSpecificPreviewImage String,
+    group Group,
+    totEmp Integer,
+    empPrse Long,
+    hourlyMean Long,
+    annualMean Long,
+    meanPrse Long,
+    hrPctHighest Long,
+    hrPctHigh Long,
+    hourlyMedian Long,
+    hrPctBelow Long,
+    hrPctLowest Long,
+    anPctHighest Long,
+    anPctHigh Long,
+    annualMedian Long,
+    anPctBelow Long,
+    anPctLowest Long,
+}
+
+entity Skills {
+	socSpecificSkName String,
+    socSpecificSkCode String,
+    anDaInLv Long,
+    anDaInIm Long,    
+    asCaOthLv Long,
+    asCaOthIm Long,    
+    coDevOthLv Long,
+    coDevOthIm Long,
+    coPerOutOrgLv Long,
+    coPerOutOrgIm Long,
+    coSupPeSubLv Long,
+    coSupPeSubIm Long,
+    conMaProLv Long,
+    conMaProIm Long,
+    cooWorActOthLv Long,
+    cooWorActOthIm Long,
+    devBuildTeamsLv Long,
+    devBuildTeamsIm Long,
+    devObjStratLv Long,
+    devObjStratIm Long,
+    docRecInfoLv Long,
+    docRecInfoIm Long,
+    drLayOutSpecLv Long,
+    drLayOutSpecIm Long,
+    estMaIntRelLv Long,
+    estMaIntRelIm Long,
 }
 
 // an ignored comment
@@ -36,7 +117,7 @@ entity Task {
     upperClBound BigDecimal,
     recommendSuppress String,
     notRelevant String,
-    date ZonedDateTime,
+    date LocalDate,
     domainSource String,
 	description String
 }
@@ -55,7 +136,8 @@ entity Employee {
 	email String,
 	phone String,
     badgeNumber String,
-	startDate ZonedDateTime,
+	startDate LocalDate,
+    memberSince ZonedDateTime,
 	previousSalary Long,
     currentSalary Long,
     goalSalary Long,
@@ -74,8 +156,8 @@ entity Job {
 }
 
 entity JobHistory {
-	startDate ZonedDateTime,
-	endDate ZonedDateTime,
+	startDate LocalDate,
+	endDate LocalDate,
 	language Language
 }
 
@@ -122,6 +204,10 @@ enum Level {
 	NOVICE, BEGINNER, INTERMEDIATE, ADVANCED, PROFESSIONAL
 }
 
+enum Group {
+	MAIN, MAJOR, ROLE, TITLED
+}
+
 enum ResourceType {
 	VIDEO, IMAGE, TUTORIAL, PAGE, PARTIAL, TOOL 
 }
@@ -130,26 +216,21 @@ enum Language {
     ENGLISH, SPANISH, HUNGARIAN, GERMAN, FRENCH
 }
 
-relationship OneToOne {
-	Country{region} to Region
-}
-
-relationship OneToOne {
-	Location{country} to Country
-}
-
-relationship OneToOne {
-	Department{location} to Location
-}
-
 relationship OneToMany {
 	Discipline{resources} to Resource,
 	Program{resources} to Resource,
     Course{resources} to Resource,
     Lesson{resources} to Resource,
+    SocMajor{socminor} to SocMinor,
+    SocMinor{socbroad} to SocBroad,
+    SocBroad{socspecific} to SocSpecific,
+    Region{country} to Country,
     Employee{job} to Job,
+    Country{location} to Location,
 	Department{employee} to Employee,
-    Discipline{employee} to Employee
+    Discipline{employee} to Employee,
+    SocSpecific{employee} to Employee,
+    Location{department} to Department
 }
 
 relationship ManyToMany {
@@ -167,12 +248,13 @@ relationship ManyToOne {
 relationship OneToOne {
 	JobHistory{job} to Job,
 	JobHistory{department} to Department,
-	JobHistory{employee} to Employee
+	JobHistory{employee} to Employee,
+    SocSpecific{skills} to Skills
 }
 
 // Set pagination options
 paginate Lesson, JobHistory, Employee with infinite-scroll
-paginate Program, Course, Job with pagination
+paginate Program, Course, Job, SocSpecific with pagination
 
 dto * with mapstruct
 

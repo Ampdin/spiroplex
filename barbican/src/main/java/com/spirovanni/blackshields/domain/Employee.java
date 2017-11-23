@@ -9,6 +9,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -56,7 +57,10 @@ public class Employee implements Serializable {
     private String badgeNumber;
 
     @Column(name = "start_date")
-    private ZonedDateTime startDate;
+    private LocalDate startDate;
+
+    @Column(name = "member_since")
+    private ZonedDateTime memberSince;
 
     @Column(name = "previous_salary")
     private Long previousSalary;
@@ -88,6 +92,9 @@ public class Employee implements Serializable {
 
     @Column(name = "employee_avatar_content_type")
     private String employeeAvatarContentType;
+
+    @ManyToOne
+    private SocSpecific socSpecific;
 
     @ManyToOne
     private Department department;
@@ -203,17 +210,30 @@ public class Employee implements Serializable {
         this.badgeNumber = badgeNumber;
     }
 
-    public ZonedDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public Employee startDate(ZonedDateTime startDate) {
+    public Employee startDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
 
-    public void setStartDate(ZonedDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
+    }
+
+    public ZonedDateTime getMemberSince() {
+        return memberSince;
+    }
+
+    public Employee memberSince(ZonedDateTime memberSince) {
+        this.memberSince = memberSince;
+        return this;
+    }
+
+    public void setMemberSince(ZonedDateTime memberSince) {
+        this.memberSince = memberSince;
     }
 
     public Long getPreviousSalary() {
@@ -346,6 +366,19 @@ public class Employee implements Serializable {
         this.employeeAvatarContentType = employeeAvatarContentType;
     }
 
+    public SocSpecific getSocSpecific() {
+        return socSpecific;
+    }
+
+    public Employee socSpecific(SocSpecific socSpecific) {
+        this.socSpecific = socSpecific;
+        return this;
+    }
+
+    public void setSocSpecific(SocSpecific socSpecific) {
+        this.socSpecific = socSpecific;
+    }
+
     public Department getDepartment() {
         return department;
     }
@@ -443,6 +476,7 @@ public class Employee implements Serializable {
             ", phone='" + getPhone() + "'" +
             ", badgeNumber='" + getBadgeNumber() + "'" +
             ", startDate='" + getStartDate() + "'" +
+            ", memberSince='" + getMemberSince() + "'" +
             ", previousSalary='" + getPreviousSalary() + "'" +
             ", currentSalary='" + getCurrentSalary() + "'" +
             ", goalSalary='" + getGoalSalary() + "'" +
